@@ -6,10 +6,12 @@ object Main extends App {
 
   // Initiate ActorSystem and HelloActor
   val system: ActorSystem = ActorSystem("test")
-  val helloActor = system.actorOf(Props[HelloActor], "helloActor")
+  val personalGreeter = system.actorOf(Props[PersonalGreeter], "personalGreeter")
 
-  // TODO: Send message to HelloActor
-
+  while(true) {
+    val input = scala.io.StdIn.readLine()
+    personalGreeter ! input
+  }
   // And kill the system
   system.terminate()
 }
