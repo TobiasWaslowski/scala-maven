@@ -1,9 +1,8 @@
 package de.nordakademie.reaktiv.demo
 
-import akka.actor.Actor
+import akka.actor.{Actor, ActorRef}
 
-class PersonalGreeter extends Actor {
-
+class PersonalGreeter(helloActor: ActorRef) extends Actor {
 
   override def preStart(): Unit = println("Wie heiﬂt du?")
 
@@ -23,7 +22,8 @@ class PersonalGreeter extends Actor {
       if (string.isEmpty || string.contains(" ")) {
         println("Sorry, das ist kein valider Input")
       } else {
-        println(s"Hallo, ${firstName} ${string}")
+        // println(s"Hallo, ${firstName} ${string}")
+        helloActor ! s"${firstName} ${string}"
         preStart()
         context.become(receive)
       }

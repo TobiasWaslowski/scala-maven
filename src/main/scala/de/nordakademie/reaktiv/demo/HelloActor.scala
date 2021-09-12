@@ -5,8 +5,8 @@ import akka.actor.Actor
 class HelloActor extends Actor {
 
   def receive: Receive = {
-    case "hello" => println("hello back at you")
-    case _ => println("huh?")
+    case string: String => println(s"Hallo, ${string}!")
+    case _ => println("Sorry, das verstehe ich nicht.")
   }
 
 }
