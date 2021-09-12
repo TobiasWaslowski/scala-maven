@@ -4,13 +4,12 @@ import akka.actor.{ActorSystem, Props}
 
 object Main extends App {
 
+  // Initiate ActorSystem and HelloActor
   val system: ActorSystem = ActorSystem("test")
   val helloActor = system.actorOf(Props[HelloActor], "helloActor")
-  val greeter = system.actorOf(Props[Greeter], "greeter")
 
-  greeter ! Message(helloActor, "test")
-  greeter ! Message(helloActor, "hello")
-  greeter ! "hello"
+  // TODO: Send message to HelloActor
 
+  // And kill the system
   system.terminate()
 }
