@@ -12,3 +12,6 @@ Hinweis: Input könnt ihr mit dem folgenden Funktionsaufruf erhalten:
 
     scala.io.StdIn.readLine()
 
+Weiterer Hinweis: Ihr könnt bei der Instantiierung des Actors den Actor zu parametrisieren. Das geht folgendermaßen:
+
+    val personalGreeter = system.actorOf(Props(classOf[PersonalGreeter], args), "personalGreeter")
